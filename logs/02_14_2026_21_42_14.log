@@ -1,0 +1,2 @@
+[2026-02-14 21:42:24,056] 50 root - INFO - Data inserted successfully into MongoDB collection: Collection(Database(MongoClient(host=['cluster0-shard-00-00.b33ow.mongodb.net:27017', 'cluster0-shard-00-01.b33ow.mongodb.net:27017', 'cluster0-shard-00-02.b33ow.mongodb.net:27017'], document_class=dict, tz_aware=False, connect=True, appname='Cluster0', authsource='admin', replicaset='atlas-jml8ui-shard-0', tls=True), 'Network_Security'), 'Network_Data')
+[2026-02-14 21:42:24,057] 66 root - INFO - Total number of records inserted: 11055
