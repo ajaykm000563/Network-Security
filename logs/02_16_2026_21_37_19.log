@@ -1,0 +1,17 @@
+[2026-02-16 21:37:22,398] 18 root - INFO - Exporting collection as DataFrame
+[2026-02-16 21:37:24,726] 45 root - INFO - Data exported successfully from MongoDB collection: Network_Data
+[2026-02-16 21:37:24,803] 59 root - INFO - Data exported successfully into feature store file: Artifact\02-16-2026-21-37-20\data_ingestion\feature_store\phisingData.csv
+[2026-02-16 21:37:24,807] 71 root - INFO - Data split into train and test sets successfully with test size: 0.2
+[2026-02-16 21:37:24,809] 76 root - INFO - Exporting train and test sets to file paths: Artifact\02-16-2026-21-37-20\data_ingestion\ingested\train.csv and Artifact\02-16-2026-21-37-20\data_ingestion\ingested\test.csv
+[2026-02-16 21:37:24,865] 85 root - INFO - Train and test sets exported successfully to file paths: Artifact\02-16-2026-21-37-20\data_ingestion\ingested\train.csv and Artifact\02-16-2026-21-37-20\data_ingestion\ingested\test.csv
+[2026-02-16 21:37:24,865] 98 root - INFO - Data ingestion completed successfully with artifact: DataIngestionArtifact(training_file_path='Artifact\\02-16-2026-21-37-20\\data_ingestion\\ingested\\train.csv', testing_file_path='Artifact\\02-16-2026-21-37-20\\data_ingestion\\ingested\\test.csv')
+[2026-02-16 21:37:24,866] 21 root - INFO - Starting data validation
+[2026-02-16 21:37:24,944] 38 root - INFO - Schema columns count: 31
+[2026-02-16 21:37:24,944] 39 root - INFO - Dataframe columns count: 31
+[2026-02-16 21:37:24,944] 40 root - INFO - Missing columns: []
+[2026-02-16 21:37:24,944] 41 root - INFO - Extra columns: []
+[2026-02-16 21:37:24,944] 38 root - INFO - Schema columns count: 31
+[2026-02-16 21:37:24,944] 39 root - INFO - Dataframe columns count: 31
+[2026-02-16 21:37:24,944] 40 root - INFO - Missing columns: []
+[2026-02-16 21:37:24,944] 41 root - INFO - Extra columns: []
+[2026-02-16 21:37:25,082] 25 root - INFO - Data validation completed successfully
