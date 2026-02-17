@@ -1,14 +1,14 @@
 from networksecurity.components.data_ingestion import DataIngestion
-from networksecurity.entity.config_entity import DataValidationConfig
+from networksecurity.entity.config_entity import DataValidationConfig,DataTransformationConfig,DataIngestionConfig,TrainingPipelineConfig
 from networksecurity.components.data_validation import DataValidation
-from networksecurity.entity.artifact_entity import DataValidationArtifact
+from networksecurity.components.data_transformation import DataTransformation
+from networksecurity.entity.artifact_entity import DataValidationArtifact,DataTransformationArtifact,DataIngestionArtifact
 from networksecurity.exception.exception import CustomException
 from networksecurity.logging.logger import logging
-from networksecurity.entity.config_entity import DataIngestionConfig
-from networksecurity.entity.artifact_entity import DataIngestionArtifact
-from networksecurity.entity.config_entity import TrainingPipelineConfig
 import os
 import sys
+
+
 
 if __name__ == "__main__":
     try:
@@ -23,7 +23,13 @@ if __name__ == "__main__":
         datavalidation = DataValidation(datavalidationconfig, dataingetionartifact)
         datavalidationartifact = datavalidation.initiate_data_validation()
         logging.info("Data validation completed successfully")
-        print(datavalidationartifact)
+        
+        logging.info("Starting data transformation")
+        datatransformationconfig = DataTransformationConfig(trainingpipelineconfig)
+        datatransformation = DataTransformation(datavalidationartifact, datatransformationconfig)
+        datatransformationartifact = datatransformation.initiate_data_transformation()
+        logging.info("Data transformation completed successfully")
+        print(datatransformationartifact)
     except Exception as e:
         logging.error(f"Error in main execution: {e}")
         raise CustomException(e, sys)
