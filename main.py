@@ -1,8 +1,9 @@
 from networksecurity.components.data_ingestion import DataIngestion
-from networksecurity.entity.config_entity import DataValidationConfig,DataTransformationConfig,DataIngestionConfig,TrainingPipelineConfig
+from networksecurity.entity.config_entity import DataValidationConfig,DataTransformationConfig,DataIngestionConfig,TrainingPipelineConfig,ModelTrainerConfig
 from networksecurity.components.data_validation import DataValidation
 from networksecurity.components.data_transformation import DataTransformation
-from networksecurity.entity.artifact_entity import DataValidationArtifact,DataTransformationArtifact,DataIngestionArtifact
+from networksecurity.entity.artifact_entity import DataValidationArtifact,DataTransformationArtifact,DataIngestionArtifact,ModelTrainerArtifact
+from networksecurity.components.model_trainer import ModelTrainer
 from networksecurity.exception.exception import CustomException
 from networksecurity.logging.logger import logging
 import os
@@ -29,7 +30,13 @@ if __name__ == "__main__":
         datatransformation = DataTransformation(datavalidationartifact, datatransformationconfig)
         datatransformationartifact = datatransformation.initiate_data_transformation()
         logging.info("Data transformation completed successfully")
-        print(datatransformationartifact)
+        
+        logging.info("Model training started")
+        model_trainer_config = ModelTrainerConfig(trainingpipelineconfig)
+        model_trainer = ModelTrainer(model_trainer_config, datatransformationartifact)
+        modeltrainerartifact = model_trainer.initiate_model_trainer()
+        logging.info("Model training completed successfully")
+        print(modeltrainerartifact)
     except Exception as e:
         logging.error(f"Error in main execution: {e}")
         raise CustomException(e, sys)

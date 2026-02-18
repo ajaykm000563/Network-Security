@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 @dataclass
 class DataIngestionArtifact:
     training_file_path: str
@@ -20,4 +19,18 @@ class DataValidationArtifact:
 class DataTransformationArtifact:
     transformed_train_file_path: str
     transformed_test_file_path: str
-    transformed_object_file_path: str    
+    transformed_object_file_path: str   
+    
+
+@dataclass
+class ClassificationMatricArtifact:
+    accuracy: float
+    precision: float
+    recall: float
+    f1_score: float    
+    
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str
+    train_matric_artifact: ClassificationMatricArtifact
+    test_matric_artifact: ClassificationMatricArtifact    
