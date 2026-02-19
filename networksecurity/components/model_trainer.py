@@ -24,6 +24,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 
+import dagshub
+dagshub.init(repo_owner='ajaykm000563', repo_name='Network-Security', mlflow=True)
+
 
 class ModelTrainer:
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact:DataTransformationArtifact):
@@ -117,6 +120,9 @@ class ModelTrainer:
  
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
+        
+        # Saving the models permanently on final_model directory
+        save_object("final_models/model.pkl",best_model)
 
         ## Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
@@ -142,7 +148,7 @@ class ModelTrainer:
             x_train, y_train = train_arr[:, :-1], train_arr[:, -1]
             x_test, y_test = test_arr[:, :-1], test_arr[:, -1]
 
-            model = self.train_model(x_train, y_train, x_test, y_test)
-            return model
+            model_trainer_artifact = self.train_model(x_train, y_train, x_test, y_test)
+            return model_trainer_artifact
         except Exception as e:
             raise CustomException(e, sys) from e         
